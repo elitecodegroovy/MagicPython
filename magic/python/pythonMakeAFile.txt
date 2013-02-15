@@ -1,0 +1,4 @@
+There is important information about IDLE, Tkinter,
+and Tcl/Tk on Mac OS X here. Also, on Mac OS X 10.6,
+if you need to build C extension modules with the 32-bit-only Python installed,
+you will need Apple Xcode 3, not 4. The 64-bit/32-bit Python can use either Xcode 3 or Xcode 4.

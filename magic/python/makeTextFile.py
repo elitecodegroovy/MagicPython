@@ -1,9 +1,9 @@
 __author__ = 'JohnLiu'
 #!/usr/bin/env python
-'makeTextFile.py -- create text file'
+'makeTextFile.py -- create tet file'
 
 import os
-
+from pyquery import PyQuery as pyq
 # get filename
 file_name = 'pythonMakeAFile.txt'
 #while True:
@@ -30,3 +30,13 @@ fobj = open(file_name, 'w')
 fobj.writelines(['%s%s' % (x, '\n') for x in all])
 fobj.close()
 print 'DONE!'
+
+#need install third-part library lxml
+doc=pyq(url=r'http://list.taobao.com/browse/cat-0.htm')
+cts=doc('.market-cat')
+
+for i in cts:
+    print '====',pyq(i).find('h4').text() ,'===='
+    for j in pyq(i).find('.sub'):
+        print pyq(j).text() ,
+    print '\n'

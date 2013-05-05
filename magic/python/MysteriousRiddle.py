@@ -1,10 +1,11 @@
 __author__ = 'JohnLiu'
 
 import string
-#riddle one:
+import re
+#riddle 0
 print "2**38 = %d", 2**38
 
-#riddle two
+#riddle 1
 number_unknown = []
 known_str= []
 answer = ''
@@ -35,9 +36,10 @@ mapper = string.maketrans(unknown, answer)
 #Yeah, as you seen. It is the acronym to a software technology.
 print url.translate(mapper)
 
-# riddle 3
+# riddle 2
 #find rare characters in the mess below:
-passage = """%%$@_$^__#)^)&!_+]!*@&^}@[@%]()%+$&[(_@%+%$*^@$^!+]!&_#)_*}{}}!}_]$[%}@[{_@#_^{*
+riddle2 = """
+%%$@_$^__#)^)&!_+]!*@&^}@[@%]()%+$&[(_@%+%$*^@$^!+]!&_#)_*}{}}!}_]$[%}@[{_@#_^{*
 @##&{#&{&)*%(]{{([*}@[@&]+!!*{)!}{%+{))])[!^})+)$]#{*+^((@^@}$[**$&^{$!@#$%)!@(&
 +^!{%_$&@^!}$_${)$_#)!({@!)(^}!*^&!$%_&&}&_#&@{)]{+)%*{&*%*&@%$+]!*__(#!*){%&@++
 !_)^$&&%#+)}!@!)&^}**#!_$([$!$}#*^}$+&#[{*{}{((#$]{[$[$$()_#}!@}^@_&%^*!){*^^_$^
@@ -1259,7 +1261,7 @@ $#_}*!(+([_&%{^&[([%]}*^{{([@+@]@*&@_!]_+([(#&!]]#$$#]@#{_]][_{@]{*))$({%}_![@$]
 #@}&$[[%]_&$+)$!%{(}$^$}*
 """
 c_mapping = {}
-for i in passage:
+for i in riddle2:
     if(c_mapping.has_key(i)):
         c_mapping[i] = c_mapping[i] + 1
     else:
@@ -1275,6 +1277,3 @@ for k, v in c_mapping.iteritems():
 
 #build a English word with characters, then it is the answer.
 print "-----final characters: [%s]"% t_characters
-
-
-

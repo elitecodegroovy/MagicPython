@@ -43,3 +43,11 @@ d_wife = copy.deepcopy(wife)
 d_hubby[1][1] = 9000.00
 d_wife[1][1] = 6000.00
 print d_hubby, d_wife
+
+_temp = 'i love python!'
+print _temp[::-1], _temp[::2] ,('Faye', 'Leanna', 'Daylen')[-100:100]
+
+_temp = 'May best wishes follow you everyday!'
+#using None as an index has the same effect as a missing index
+for i in ([None] + range(-1, -len(_temp), -1)):
+    print _temp[:i]

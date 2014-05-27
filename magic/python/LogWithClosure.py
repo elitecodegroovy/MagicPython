@@ -1,6 +1,7 @@
 __author__ = 'JohnLiu'
 from time import time
 
+
 def logged(when):
     def log(f, *args, **kargs):
          print '''Called:function: %sargs: %rkargs: %r''' % (f, args, kargs)

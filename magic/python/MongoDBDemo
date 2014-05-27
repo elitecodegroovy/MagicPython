@@ -1,0 +1,7 @@
+from pymongo import Connection
+import gridfs
+
+db = Connection().test
+fs = gridfs.GridFS(db)
+file_id = fs.put("I am a programmer.", filename="greeting.txt")
+print fs.list(), fs.get(file_id).read()

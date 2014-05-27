@@ -82,7 +82,5 @@ print 'reference previously', y
 x = 23
 print 'changed after reassigning the new value to x', y
 
-
-
 #if a pair of variables do indeed refer to the same object:is and is not operators
 #id(a) == id(b) is the same to the expression

@@ -1,6 +1,11 @@
 __author__ = 'JohnLiu'
 
 import re
+from datetime import datetime
+from time import sleep
+
+
+
 pat = re.compile(r'([A-Za-z]+)-([A-Za-z]+)')
 
 s = 'This is a te- test of back-references in Python. To change the pattern a-b.'
@@ -8,10 +13,10 @@ print re.sub(pat, r'\1 \2', s)
 
 line = "Cats are smarter than dogs"
 
-matchObj = re.search( r'(.*) are(\.*)', line, re.M|re.I)
+matchObj = re.search(r'(.*) are(\.*)', line, re.M|re.I)
 
 if matchObj:
-     print "matchObj.group() : ", matchObj.group(0)
+    print "matchObj.group() : ", matchObj.group(0)
 
 programming = 'PythonProgramming'
 for i in range(-1,  - len(programming), -1):
@@ -54,27 +59,30 @@ for line in pyFile:
 print type(pyFile), aTuple
 
 pyFile.close()
-'''
-tips:
-    1. Thus it is important to bear in mind that most modules are
-       created solely to be imported rather than to execute asscripts.
-    2. safer code is written such that everything is ina function
-       except for the code that should be executed on an import of a
-       module. Again, usually only the main application module has
-       the bulk of the executable code at its highest level.
-    3. "Is there a wayfor Python to detect at runtime whether this
-        module was imported or executed directly?"
-           __name__ contains module name if imported
-           __name__ contains '__main__' if executed directly
-    4. although integers and strings are immutable objects, Python
-       sometimes caches them to be more efficient.
-    Data Type Storage Model Update Model Access Model
-    Numbers Scalar Immutable Direct
-    Strings Scalar Immutable Sequence
-    Lists Container Mutable Sequence
-    Tuples Container Immutable Sequence
-    Dictionaries Container Mutable Mapping
-'''
+# tips:
+#     1. Thus it is important to bear in mind that most modules are
+#        created solely to be imported rather than to execute asscripts.
+#     2. safer code is written such that everything is ina function
+#        except for the code that should be executed on an import of a
+#        module. Again, usually only the main application module has
+#        the bulk of the executable code at its highest level.
+#     3. "Is there a wayfor Python to detect at runtime whether this
+#         module was imported or executed directly?"
+#            __name__ contains module name if imported
+#            __name__ contains '__main__' if executed directly
+#     4. although integers and strings are immutable objects, Python
+#        sometimes caches them to be more efficient.
+#     Data Type Storage Model Update Model Access Model
+#     Numbers Scalar Immutable Direct
+#     Strings Scalar Immutable Sequence
+#     Lists Container Mutable Sequence
+#     Tuples Container Immutable Sequence
+#     Dictionaries Container Mutable Mapping
+#     5. Both str() and unicode() are factory functions, meaning that
+#        they produce new objects of their type respectively.
+#     6. We can use dir() on a list object to get its attributes including
+#        its methods.
+#
 x = 12
 y = x
 print 'reference previously', y
@@ -83,3 +91,26 @@ print 'changed after reassigning the new value to x', y
 
 #if a pair of variables do indeed refer to the same object:is and is not operators
 #id(a) == id(b) is the same to the expression
+
+#current datetime with format pattern,f is used for microsecond
+print datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
+
+
+def show_time(func):
+    def callFunc():
+        print '[%s, function %s called.]' % (datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3], func.__name__)
+        return func()
+    return callFunc
+
+@show_time
+def display_info():
+    print "function display_info called"
+
+display_info()
+sleep(4)
+
+for i in range(2):
+    sleep(2)
+    display_info()
+
+#1. Anonymous Functions and lambda,anonymous functions using the lambda keyword
